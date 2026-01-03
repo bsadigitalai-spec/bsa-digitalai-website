@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Marketing Concierge — BSA Digital AI</title>
+  <meta name="description" content="BSA Digital AI — Official website and marketing portal."/>
+  <link rel="icon" href="assets/img/bsa-digitalai-logo.png"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <a href="index.html" aria-label="BSA Digital AI Home">
+          <img src="assets/img/bsa-digitalai-logo.png" alt="BSA Digital AI logo"/>
+        </a>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" class="primary">Home</a>
+        <a href="professional-examples.html">Professional Examples</a>
+        <a href="chatbot.html">Marketing Concierge</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+
+  <section class="hero">
+    <div class="heroInner">
+      <div>
+        <div class="badge">Marketing Concierge</div>
+        <p class="kicker">Fast intake • Scope • Quote</p>
+        <h1>Tell us what you need — we’ll respond with scope + budget range.</h1>
+        <p>
+          This page is designed to be the “send-to” destination in outreach. It includes a lightweight request form and
+          a placeholder area where you can embed your chatbot (Chatbase, Voiceflow, Intercom, HubSpot, etc.).
+        </p>
+        <div class="ctaRow">
+          <a class="button secondary" href="professional-examples.html">See examples first</a>
+          <a class="button" href="#request">Jump to request form</a>
+        </div>
+        <hr class="sep"/>
+        <div class="notice">
+          <strong>Chatbot embed:</strong> When you pick the platform, paste its embed code into the highlighted spot in this file:
+          <code style="color:rgba(242,230,198,.95)">chatbot.html</code>.
+          (I marked it clearly so it’s easy.)
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Embed area (placeholder)</h3>
+          <div class="meta">Replace with your chatbot script/snippet.</div>
+        </div>
+        <div class="section" style="margin-top:10px;">
+          <div class="kicker">Chatbot placeholder</div>
+          <p class="small" style="margin-top:6px; margin-bottom:0;">
+            If you don't have a chatbot provider yet, you can still use the form below on Monday.
+          </p>
+          <hr class="sep"/>
+          <!-- =========================
+               CHATBOT EMBED START
+               Paste your chatbot provider's embed code below this line.
+               ========================= -->
+          <div class="card">
+            <h3>Coming soon: BSA Digital AI Concierge Bot</h3>
+            <p>Embed code goes here (e.g., Chatbase / Voiceflow / HubSpot chat widget).</p>
+            <div class="meta">For now, use the request form below.</div>
+          </div>
+          <!-- =========================
+               CHATBOT EMBED END
+               ========================= -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="request">
+    <p class="kicker">Request</p>
+    <h2 style="margin:0 0 10px; font-family: Georgia, 'Times New Roman', serif;">Marketing Concierge Request Form</h2>
+    <p class="small">This is a simple “mailto” form so it works on any static host (GitHub / Amplify) without a database.</p>
+
+    <form class="card" id="conciergeForm">
+      <label class="small">Name<br/>
+        <input name="name" required style="width:100%; margin-top:6px; padding:12px; border-radius:12px; border:1px solid rgba(215,181,109,.35); background: rgba(0,0,0,.25); color: var(--text);" />
+      </label>
+      <div style="height:10px"></div>
+
+      <label class="small">Company / Agency<br/>
+        <input name="company" style="width:100%; margin-top:6px; padding:12px; border-radius:12px; border:1px solid rgba(215,181,109,.35); background: rgba(0,0,0,.25); color: var(--text);" />
+      </label>
+      <div style="height:10px"></div>
+
+      <label class="small">Email<br/>
+        <input name="email" type="email" required style="width:100%; margin-top:6px; padding:12px; border-radius:12px; border:1px solid rgba(215,181,109,.35); background: rgba(0,0,0,.25); color: var(--text);" />
+      </label>
+      <div style="height:10px"></div>
+
+      <label class="small">What do you need? (brief)<br/>
+        <textarea name="brief" required rows="5" style="width:100%; margin-top:6px; padding:12px; border-radius:12px; border:1px solid rgba(215,181,109,.35); background: rgba(0,0,0,.25); color: var(--text);"></textarea>
+      </label>
+      <div style="height:10px"></div>
+
+      <label class="small">Deadline / Timing<br/>
+        <input name="deadline" placeholder="e.g., Same-day / This week / Jan 15" style="width:100%; margin-top:6px; padding:12px; border-radius:12px; border:1px solid rgba(215,181,109,.35); background: rgba(0,0,0,.25); color: var(--text);" />
+      </label>
+      <div style="height:14px"></div>
+
+      <button type="submit" class="button">Send request</button>
+      <p class="small" style="margin-top:10px; color: var(--muted);">
+        This will open your email client with a pre-filled message.
+      </p>
+    </form>
+  </section>
+
+  <script>
+    // Mailto form handler (no backend needed)
+    document.addEventListener("DOMContentLoaded", function(){
+      const form = document.getElementById("conciergeForm");
+      if(!form) return;
+
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+        const data = new FormData(form);
+        const name = data.get("name") || "";
+        const company = data.get("company") || "";
+        const email = data.get("email") || "";
+        const brief = data.get("brief") || "";
+        const deadline = data.get("deadline") || "";
+
+        const to = "add-your-contact-email-here";
+        const subject = encodeURIComponent("BSA Digital AI — Marketing Concierge Request");
+        const body = encodeURIComponent(
+          "Name: " + name + "\n" +
+          "Company/Agency: " + company + "\n" +
+          "Email: " + email + "\n" +
+          "Deadline/Timing: " + deadline + "\n\n" +
+          "Brief:\n" + brief + "\n"
+        );
+
+        window.location.href = "mailto:" + to + "?subject=" + subject + "&body=" + body;
+      });
+    });
+  </script>
+
+
+    <div class="footer" id="contact">
+      <div>
+        <div><strong>BSA Digital AI</strong> — Marketing Concierge Portal</div>
+        <div class="small">For agency partners & production teams: requests, scope, and rapid turnaround.</div>
+      </div>
+      <div>
+        <div class="small">© <span id="year"></span> BSA Digital AI. All rights reserved.</div>
+        <div class="small">Email: <em>add-your-contact-email-here</em> • Location: NYC / LA</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
